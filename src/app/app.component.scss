@@ -1,0 +1,70 @@
+.row {
+    display: flex;
+    .title {
+        justify-content: center;
+        width: 100vw;
+        text-align: center;
+    }
+}
+
+.row-clock {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+#clock {
+    font-size: 100px;
+}
+
+.placarA,
+.placarB {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10vh;
+    font-size: 50px;
+    height: 20vh;
+    .pontos,
+    .punicoes,
+    .vantagens {
+        width: calc(100%/3);
+        text-align: center;
+        padding: 5px;
+        p {
+            margin-top: 12px;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pontos {
+        background-color: green;
+        color: white;
+    }
+    .punicoes {
+        background-color: red;
+        color: white;
+    }
+    .vantagens {
+        background-color: yellow;
+    }
+    p {
+        -webkit-user-select: none;
+        /* Chrome all / Safari all */
+        -moz-user-select: none;
+        /* Firefox all */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Likely future */
+    }
+    strong {
+        cursor: pointer;
+    }
+}
+
+.placarB {
+    border-top: 1px solid black;
+    margin: 0;
+}

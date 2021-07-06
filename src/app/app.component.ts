@@ -1,0 +1,137 @@
+import { Component } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
+import * as moment from 'moment';
+import 'moment-duration-format';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'bjj-score-marker';
+
+  // tempo
+  private subscriptionRaiz: Subscription;
+  minutosToShow: any;
+  segundosToShow: any;
+  segundos: number = 360;
+
+  // placar
+  pontosAtletaA: number = 0;
+  vantagensAtletaA: number = 0;
+  punicoesAtletaA: number = 0;
+
+  pontosAtletaB: number = 0;
+  vantagensAtletaB: number = 0;
+  punicoesAtletaB: number = 0;
+
+  // alerta
+
+  warningSound: any;
+  soundActivated: boolean = true;
+
+  ngOnInit() {
+    this.subscriptionRaiz = interval(1000)
+      .subscribe(x => { this.countdownRaiz(); });
+  }
+
+  countdownRaiz() {
+    this.segundos = this.segundos - 1;
+    this.minutosToShow = moment.duration(this.segundos, "seconds").minutes();
+    this.segundosToShow = moment.duration(this.segundos, "seconds").seconds();
+
+    if (this.segundosToShow < 10) {
+      this.segundosToShow = '0' + this.segundosToShow;
+    }
+
+    if (this.segundos == 0) {
+      // this.playWarningSound();
+      this.subscriptionRaiz.unsubscribe();
+    }
+  }
+  playWarningSound() {
+    this.warningSound = new Audio();
+    this.warningSound.src = "assets/bsod.wav";
+    this.warningSound.load();
+    this.warningSound.play();
+  }
+
+  resetarCountdownRaiz() {
+    this.segundos = 360;
+  }
+
+  pausarCountdownRaiz() {
+    this.subscriptionRaiz.unsubscribe();
+  }
+
+  retomarCountdownRaiz() {
+    this.subscriptionRaiz = interval(1000)
+      .subscribe(x => { this.countdownRaiz(); });
+  }
+
+  ngOnDestroy() {
+    this.subscriptionRaiz.unsubscribe();
+  }
+
+  mudarPontos(atleta: string, operacao: string) {
+    if (atleta === 'A') {
+      if (operacao === 'add') {
+        this.pontosAtletaA = this.pontosAtletaA + 1;
+      } else {
+        if (this.pontosAtletaA > 0) {
+          this.pontosAtletaA = this.pontosAtletaA - 1;
+        }
+      }
+    } else {
+      if (operacao === 'add') {
+        this.pontosAtletaB = this.pontosAtletaB + 1;
+      } else {
+        if (this.pontosAtletaB > 0) {
+          this.pontosAtletaB = this.pontosAtletaB - 1;
+        }
+      }
+    }
+  }
+
+  mudarVantagens(atleta: string, operacao: string) {
+    if (atleta === 'A') {
+      if (operacao === 'add') {
+        this.vantagensAtletaA = this.vantagensAtletaA + 1;
+      } else {
+        if (this.vantagensAtletaA > 0) {
+          this.vantagensAtletaA = this.vantagensAtletaA - 1;
+        }
+      }
+    } else {
+      if (operacao === 'add') {
+        this.vantagensAtletaB = this.vantagensAtletaB + 1;
+      } else {
+        if (this.vantagensAtletaB > 0) {
+          this.vantagensAtletaB = this.vantagensAtletaB - 1;
+        }
+      }
+    }
+  }
+
+  mudarPunicoes(atleta: string, operacao: string) {
+    if (atleta === 'A') {
+      if (operacao === 'add') {
+        this.punicoesAtletaA = this.punicoesAtletaA + 1;
+      } else {
+        if (this.punicoesAtletaA > 0) {
+          this.punicoesAtletaA = this.punicoesAtletaA - 1;
+        }
+      }
+    } else {
+      if (operacao === 'add') {
+        this.punicoesAtletaB = this.punicoesAtletaB + 1;
+      } else {
+        if (this.punicoesAtletaB > 0) {
+          this.punicoesAtletaB = this.punicoesAtletaB - 1;
+        }
+      }
+    }
+  }
+
+}
