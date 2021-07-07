@@ -189,7 +189,6 @@ export class AppComponent {
   }
 
   changeTempoLuta(tempo: any) {
-    console.log(tempo);
     this.tempoDeLuta = tempo * 60 + 1;
     if (this.subscriptionRaiz) {
       this.resetarCountdownRaiz();

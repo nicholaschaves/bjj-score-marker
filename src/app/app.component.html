@@ -1,60 +1,59 @@
 <div class="row">
     <div class="title">
         <h1 style="margin-top: 1vh;">Rei do Tatame</h1>
-        <h1>Purple Edition</h1>
-        <!-- <img src="../assets/octopus.jpg" alt="octopus" style="width: 100px;
-        position: absolute;
-        left: 80vw;
-        top: 25vh;"> -->
+        <div class="purple-edition">
+            <h1>Purple Edition <img src="../assets/octopus-no-background.png" alt="octopus" style="width: 50px;"></h1>
+
+        </div>
     </div>
 </div>
 
-<div class="tempos">
-    <div class="opcao" (click)="changeTempoLuta(5)">5 minutos</div>
-    <div class="opcao" (click)="changeTempoLuta(6)">6 minutos</div>
-    <div class="opcao" (click)="changeTempoLuta(7)">7 minutos</div>
-    <div class="opcao" (click)="changeTempoLuta(10)">10 minutos</div>
+<div class=" tempos ">
+    <div class="opcao " (click)="changeTempoLuta(5) ">5 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(6) ">6 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(7) ">7 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(10) ">10 minutos</div>
 </div>
 
-<div class="row-clock">
+<div class="row-clock ">
     <h5 id="clock">{{minutosToShow}}:{{segundosToShow}}</h5>
 </div>
 
-<div class="row row-icons" style="justify-content: space-evenly;margin-bottom: -55px;">
-    <span class="material-icons" (click)="retomarCountdownRaiz()">play_circle</span>
-    <span class="material-icons" (click)="pausarCountdownRaiz()">pause</span>
-    <span class="material-icons" (click)="resetarCountdownRaiz()">replay</span>
+<div class="row row-icons " style="justify-content: space-evenly;margin-bottom: -55px; ">
+    <span class="material-icons " (click)="retomarCountdownRaiz() ">play_circle</span>
+    <span class="material-icons " (click)="pausarCountdownRaiz() ">pause</span>
+    <span class="material-icons " (click)="resetarCountdownRaiz() ">replay</span>
 
 
-    <!-- <button (click)="retomarCountdownRaiz()">INICIAR</button>
-    <button (click)="resetarCountdownRaiz()">ZERAR</button>
-    <button (click)="pausarCountdownRaiz()">PAUSAR</button> -->
+    <!-- <button (click)="retomarCountdownRaiz() ">INICIAR</button>
+    <button (click)="resetarCountdownRaiz() ">ZERAR</button>
+    <button (click)="pausarCountdownRaiz() ">PAUSAR</button> -->
 </div>
 
 
-<div class="placarA disable-select">
-    <div class="pontos">
-        <p> <strong (click)="mudarPontos('A', 'min')">-</strong> {{pontosAtletaA}} <strong (click)="mudarPontos('A', 'add')">+</strong></p>
+<div class="placarA disable-select ">
+    <div class="pontos ">
+        <p> <strong (click)="mudarPontos( 'A', 'min') ">-</strong> {{pontosAtletaA}} <strong (click)="mudarPontos( 'A', 'add') ">+</strong></p>
     </div>
-    <div class="vantagens">
-        <p> <strong (click)="mudarVantagens('A', 'min')">-</strong> {{vantagensAtletaA}} <strong (click)="mudarVantagens('A', 'add')">+</strong></p>
+    <div class="vantagens ">
+        <p> <strong (click)="mudarVantagens( 'A', 'min') ">-</strong> {{vantagensAtletaA}} <strong (click)="mudarVantagens( 'A', 'add') ">+</strong></p>
     </div>
-    <div class="punicoes">
-        <p> <strong (click)="mudarPunicoes('A', 'min')">-</strong> {{punicoesAtletaA}} <strong (click)="mudarPunicoes('A', 'add')">+</strong></p>
+    <div class="punicoes ">
+        <p> <strong (click)="mudarPunicoes( 'A', 'min') ">-</strong> {{punicoesAtletaA}} <strong (click)="mudarPunicoes( 'A', 'add') ">+</strong></p>
     </div>
 </div>
-<div class="placarB disable-select">
-    <div class="pontos">
-        <p> <strong (click)="mudarPontos('B', 'min')">-</strong> {{pontosAtletaB}} <strong (click)="mudarPontos('B', 'add')">+</strong></p>
+<div class="placarB disable-select ">
+    <div class="pontos ">
+        <p> <strong (click)="mudarPontos( 'B', 'min') ">-</strong> {{pontosAtletaB}} <strong (click)="mudarPontos( 'B', 'add') ">+</strong></p>
     </div>
-    <div class="vantagens">
-        <p> <strong (click)="mudarVantagens('B', 'min')">-</strong> {{vantagensAtletaB}} <strong (click)="mudarVantagens('B', 'add')">+</strong></p>
+    <div class="vantagens ">
+        <p> <strong (click)="mudarVantagens( 'B', 'min') ">-</strong> {{vantagensAtletaB}} <strong (click)="mudarVantagens( 'B', 'add') ">+</strong></p>
     </div>
-    <div class="punicoes">
-        <p> <strong (click)="mudarPunicoes('B', 'min')">-</strong> {{punicoesAtletaB}} <strong (click)="mudarPunicoes('B', 'add')">+</strong></p>
+    <div class="punicoes ">
+        <p> <strong (click)="mudarPunicoes( 'B', 'min') ">-</strong> {{punicoesAtletaB}} <strong (click)="mudarPunicoes( 'B', 'add') ">+</strong></p>
     </div>
 </div>
 
 <router-outlet></router-outlet>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js "></script>
