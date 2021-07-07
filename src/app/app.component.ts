@@ -52,18 +52,18 @@ export class AppComponent {
     }
 
     if (this.segundos == 0) {
-      // this.playWarningSound();
-      this.identificarVencedor();
-      this.snackBar.open('O vencedor é o atleta ' + this.vencedor, 'OK', {
-        duration: 20000
-      });
+      this.playWarningSound();
+      // this.identificarVencedor();
+      // this.snackBar.open('O vencedor é o atleta ' + this.vencedor, 'OK', {
+      //   duration: 20000
+      // });
 
       this.subscriptionRaiz.unsubscribe();
     }
   }
   playWarningSound() {
     this.warningSound = new Audio();
-    this.warningSound.src = "assets/bsod.wav";
+    this.warningSound.src = "assets/police-whistle.wav";
     this.warningSound.load();
     this.warningSound.play();
   }
