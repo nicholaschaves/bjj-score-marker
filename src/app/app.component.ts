@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import * as moment from 'moment';
 import 'moment-duration-format';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ export class AppComponent {
   private subscriptionRaiz: Subscription;
   minutosToShow: any;
   segundosToShow: any;
-  segundos: number = 360;
+  segundos: number = 361; // 6min e 1s
+  clockAlreadyRunning: boolean;
+  tempoDeLuta: number = 361;
 
   // placar
   pontosAtletaA: number = 0;
@@ -26,14 +29,17 @@ export class AppComponent {
   vantagensAtletaB: number = 0;
   punicoesAtletaB: number = 0;
 
+  vencedor: string;
+
   // alerta
 
   warningSound: any;
   soundActivated: boolean = true;
 
+  constructor(private snackBar: MatSnackBar) { }
+
   ngOnInit() {
-    this.subscriptionRaiz = interval(1000)
-      .subscribe(x => { this.countdownRaiz(); });
+    this.countdownRaiz();
   }
 
   countdownRaiz() {
@@ -47,6 +53,11 @@ export class AppComponent {
 
     if (this.segundos == 0) {
       // this.playWarningSound();
+      this.identificarVencedor();
+      this.snackBar.open('O vencedor é o atleta ' + this.vencedor, 'OK', {
+        duration: 20000
+      });
+
       this.subscriptionRaiz.unsubscribe();
     }
   }
@@ -58,16 +69,24 @@ export class AppComponent {
   }
 
   resetarCountdownRaiz() {
-    this.segundos = 360;
+    this.subscriptionRaiz.unsubscribe();
+    this.clockAlreadyRunning = false;
+    this.segundos = this.tempoDeLuta;
+    this.countdownRaiz();
+    this.resetarPontuacoes();
   }
 
   pausarCountdownRaiz() {
     this.subscriptionRaiz.unsubscribe();
+    this.clockAlreadyRunning = false;
   }
 
   retomarCountdownRaiz() {
-    this.subscriptionRaiz = interval(1000)
-      .subscribe(x => { this.countdownRaiz(); });
+    if (!this.clockAlreadyRunning) {
+      this.subscriptionRaiz = interval(1000)
+        .subscribe(x => { this.countdownRaiz(); });
+      this.clockAlreadyRunning = true;
+    }
   }
 
   ngOnDestroy() {
@@ -131,6 +150,54 @@ export class AppComponent {
           this.punicoesAtletaB = this.punicoesAtletaB - 1;
         }
       }
+    }
+  }
+
+  identificarVencedor() {
+    if (this.pontosAtletaA == this.pontosAtletaB) {
+      // critério de vantagens
+      if (this.vantagensAtletaA == this.vantagensAtletaB) {
+        // critério de punições
+        if (this.punicoesAtletaA > this.punicoesAtletaB) {
+          this.vencedor = 'B';
+        } else {
+          this.vencedor = 'A';
+        }
+      } else {
+        if (this.vantagensAtletaA > this.vantagensAtletaB) {
+          this.vencedor = 'A';
+        } else {
+          this.vencedor = 'B';
+        }
+      }
+    } else {
+      if (this.pontosAtletaA > this.pontosAtletaB) {
+        this.vencedor = 'A';
+      } else {
+        this.vencedor = 'B';
+      }
+    }
+  }
+
+  resetarPontuacoes() {
+    this.pontosAtletaA = 0;
+    this.pontosAtletaB = 0;
+    this.vantagensAtletaA = 0;
+    this.vantagensAtletaB = 0;
+    this.punicoesAtletaA = 0;
+    this.punicoesAtletaB = 0;
+  }
+
+  changeTempoLuta(tempo: any) {
+    console.log(tempo);
+    this.tempoDeLuta = tempo * 60 + 1;
+    if (this.subscriptionRaiz) {
+      this.resetarCountdownRaiz();
+    } else {
+      this.clockAlreadyRunning = false;
+      this.segundos = this.tempoDeLuta;
+      this.countdownRaiz();
+      this.resetarPontuacoes();
     }
   }
 

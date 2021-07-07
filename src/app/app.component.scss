@@ -41,15 +41,15 @@
         justify-content: center;
     }
     .pontos {
-        background-color: green;
+        background-color: #4da04d;
         color: white;
     }
     .punicoes {
-        background-color: red;
+        background-color: #e42d2d;
         color: white;
     }
     .vantagens {
-        background-color: yellow;
+        background-color: #ecec37;
     }
     p {
         -webkit-user-select: none;
@@ -72,10 +72,37 @@
 }
 
 .material-icons {
-    font-size: 90px;
+    font-size: 70px;
     cursor: pointer;
 }
 
 .row-icons span:hover {
     color: rgb(100, 100, 100);
+}
+
+.tempos {
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+    .opcao {
+        border-radius: 5px;
+        padding: 5px;
+        margin-right: 1vw;
+        border: 1px solid purple;
+        color: purple;
+        -webkit-user-select: none;
+        /* Chrome all / Safari all */
+        -moz-user-select: none;
+        /* Firefox all */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none;
+        /* Likely future */
+    }
+    .opcao:hover {
+        border: 1px solid white;
+        background-color: purple;
+        color: white;
+        cursor: pointer;
+    }
 }
