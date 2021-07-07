@@ -4,6 +4,8 @@
         justify-content: center;
         width: 100vw;
         text-align: center;
+        background: purple;
+        color: white;
     }
 }
 
@@ -67,4 +69,13 @@
 .placarB {
     border-top: 1px solid black;
     margin: 0;
+}
+
+.material-icons {
+    font-size: 90px;
+    cursor: pointer;
+}
+
+.row-icons span:hover {
+    color: rgb(100, 100, 100);
 }

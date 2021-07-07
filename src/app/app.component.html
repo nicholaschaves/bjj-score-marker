@@ -2,6 +2,10 @@
     <div class="title">
         <h1>Rei do Tatame</h1>
         <h1>Purple Edition</h1>
+        <img src="../assets/octopus.jpg" alt="octopus" style="width: 100px;
+        position: absolute;
+        left: 90vw;
+        top: 25vh;">
     </div>
 </div>
 
@@ -9,11 +13,17 @@
     <h5 id="clock">{{minutosToShow}}:{{segundosToShow}}</h5>
 </div>
 
-<div class="row" style="justify-content: space-evenly;">
-    <button (click)="retomarCountdownRaiz()">INICIAR</button>
+<div class="row row-icons" style="justify-content: space-evenly;margin-bottom: -50px;">
+    <span class="material-icons" (click)="retomarCountdownRaiz()">play_circle</span>
+    <span class="material-icons" (click)="pausarCountdownRaiz()">pause</span>
+    <span class="material-icons" (click)="resetarCountdownRaiz()">replay</span>
+
+
+    <!-- <button (click)="retomarCountdownRaiz()">INICIAR</button>
     <button (click)="resetarCountdownRaiz()">ZERAR</button>
-    <button (click)="pausarCountdownRaiz()">PAUSAR</button>
+    <button (click)="pausarCountdownRaiz()">PAUSAR</button> -->
 </div>
+
 
 <div class="placarA disable-select">
     <div class="pontos">
