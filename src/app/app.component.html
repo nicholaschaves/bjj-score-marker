@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row slide-in-top">
     <div class="title">
         <h1 style="margin-top: 1vh;">Rei do Tatame</h1>
         <div class="purple-edition">
@@ -8,18 +8,18 @@
     </div>
 </div>
 
-<div class=" tempos ">
-    <div class="opcao " (click)="changeTempoLuta(5) ">5 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(6) ">6 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(7) ">7 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(10) ">10 minutos</div>
+<div class=" tempos slit-in-vertical">
+    <div class="opcao " (click)="changeTempoLuta(5) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === fiveMin}">5 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(6) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sixMin}">6 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(7) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sevenMin}">7 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(10) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === tenMin}">10 minutos</div>
 </div>
 
-<div class="row-clock ">
+<div class="row-clock slit-in-vertical">
     <h5 id="clock">{{minutosToShow}}:{{segundosToShow}}</h5>
 </div>
 
-<div class="row row-icons " style="justify-content: space-evenly;margin-bottom: -55px; ">
+<div class="row row-icons slit-in-vertical" style="justify-content: space-evenly;margin-bottom: -55px; ">
     <span class="material-icons " (click)="retomarCountdownRaiz() ">play_circle</span>
     <span class="material-icons " (click)="pausarCountdownRaiz() ">pause</span>
     <span class="material-icons " (click)="resetarCountdownRaiz() ">replay</span>
@@ -31,7 +31,7 @@
 </div>
 
 
-<div class="placarA disable-select ">
+<div class="placarA disable-select slide-in-left">
     <div class="pontos ">
         <p> <strong (click)="mudarPontos( 'A', 'min') ">-</strong> {{pontosAtletaA}} <strong (click)="mudarPontos( 'A', 'add') ">+</strong></p>
     </div>
@@ -42,7 +42,7 @@
         <p> <strong (click)="mudarPunicoes( 'A', 'min') ">-</strong> {{punicoesAtletaA}} <strong (click)="mudarPunicoes( 'A', 'add') ">+</strong></p>
     </div>
 </div>
-<div class="placarB disable-select ">
+<div class="placarB disable-select slide-in-right">
     <div class="pontos ">
         <p> <strong (click)="mudarPontos( 'B', 'min') ">-</strong> {{pontosAtletaB}} <strong (click)="mudarPontos( 'B', 'add') ">+</strong></p>
     </div>
@@ -52,6 +52,12 @@
     <div class="punicoes ">
         <p> <strong (click)="mudarPunicoes( 'B', 'min') ">-</strong> {{punicoesAtletaB}} <strong (click)="mudarPunicoes( 'B', 'add') ">+</strong></p>
     </div>
+</div>
+
+<div class="footer">
+    <a href="https://www.instagram.com/nicholaschaves_/" target="_blank">
+        <p>© Desenvolvido por Nicholas Chaves ©</p>
+    </a>
 </div>
 
 <router-outlet></router-outlet>

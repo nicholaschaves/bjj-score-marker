@@ -19,6 +19,7 @@ export class AppComponent {
   segundos: number = 361; // 6min e 1s
   clockAlreadyRunning: boolean;
   tempoDeLuta: number = 361;
+  tempoEscolhidoToScss: 6;
 
   // placar
   pontosAtletaA: number = 0;
@@ -36,9 +37,16 @@ export class AppComponent {
   warningSound: any;
   soundActivated: boolean = true;
 
+  // tempos pra testar
+  fiveMin: number = 5;
+  sixMin: number = 6;
+  sevenMin: number = 7;
+  tenMin: number = 10;
+
   constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.tempoEscolhidoToScss = 6;
     this.countdownRaiz();
   }
 
@@ -190,6 +198,7 @@ export class AppComponent {
 
   changeTempoLuta(tempo: any) {
     this.tempoDeLuta = tempo * 60 + 1;
+    this.tempoEscolhidoToScss = tempo;
     if (this.subscriptionRaiz) {
       this.resetarCountdownRaiz();
     } else {
