@@ -1,10 +1,11 @@
 .row {
     display: flex;
+
     .title {
         justify-content: center;
         width: 100vw;
         text-align: center;
-        background: purple;
+        background: #113468;
         color: white;
     }
 }
@@ -27,30 +28,37 @@
     margin-top: 10vh;
     font-size: 50px;
     height: 20vh;
+
     .pontos,
     .punicoes,
     .vantagens {
         width: calc(100%/3);
         text-align: center;
         padding: 5px;
+
         p {
             margin-top: 12px;
         }
+
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
     .pontos {
         background-color: #4da04d;
         color: white;
     }
+
     .punicoes {
         background-color: #e42d2d;
         color: white;
     }
+
     .vantagens {
         background-color: #ecec37;
     }
+
     p {
         -webkit-user-select: none;
         /* Chrome all / Safari all */
@@ -61,6 +69,7 @@
         user-select: none;
         /* Likely future */
     }
+
     strong {
         cursor: pointer;
     }
@@ -84,12 +93,13 @@
     display: flex;
     justify-content: center;
     margin-top: 1vh;
+
     .opcao {
         border-radius: 5px;
         padding: 5px;
         margin-right: 1vw;
-        border: 1px solid purple;
-        color: purple;
+        border: 1px solid #113468;
+        color: #113468;
         -webkit-user-select: none;
         /* Chrome all / Safari all */
         -moz-user-select: none;
@@ -99,9 +109,10 @@
         user-select: none;
         /* Likely future */
     }
+
     .opcao:hover {
         border: 1px solid white;
-        background-color: purple;
+        background-color: #113468;
         color: white;
         cursor: pointer;
     }
@@ -119,14 +130,16 @@
     display: flex;
     background-color: white;
     margin-top: 1vh;
+
     a,
     a:visited,
     a:active {
-        color: purple;
+        color: #113468;
         text-decoration: none;
     }
+
     a:hover {
-        color: purple;
+        color: #113468;
         text-decoration: underline;
         transition: all 0.3s ease;
     }
@@ -135,7 +148,7 @@
 .tempoEscolhido {
     border: 1px white;
     color: white !important;
-    background-color: purple;
+    background-color: #113468;
 }
 
 .slide-in-top {
@@ -164,6 +177,7 @@
         transform: translateY(-1000px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);
@@ -177,6 +191,7 @@
         transform: translateY(-1000px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateY(0);
         transform: translateY(0);
@@ -210,11 +225,13 @@
         transform: translateZ(-800px) rotateY(90deg);
         opacity: 0;
     }
+
     54% {
         -webkit-transform: translateZ(-160px) rotateY(87deg);
         transform: translateZ(-160px) rotateY(87deg);
         opacity: 1;
     }
+
     100% {
         -webkit-transform: translateZ(0) rotateY(0);
         transform: translateZ(0) rotateY(0);
@@ -227,11 +244,13 @@
         transform: translateZ(-800px) rotateY(90deg);
         opacity: 0;
     }
+
     54% {
         -webkit-transform: translateZ(-160px) rotateY(87deg);
         transform: translateZ(-160px) rotateY(87deg);
         opacity: 1;
     }
+
     100% {
         -webkit-transform: translateZ(0) rotateY(0);
         transform: translateZ(0) rotateY(0);
@@ -264,6 +283,7 @@
         transform: translateX(1000px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateX(0);
         transform: translateX(0);
@@ -277,6 +297,7 @@
         transform: translateX(1000px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateX(0);
         transform: translateX(0);
@@ -310,6 +331,7 @@
         transform: translateX(-1000px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateX(0);
         transform: translateX(0);
@@ -323,6 +345,7 @@
         transform: translateX(-1000px);
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateX(0);
         transform: translateX(0);
