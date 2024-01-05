@@ -95,6 +95,8 @@
     display: flex;
     justify-content: center;
     margin-top: 1vh;
+    flex-flow: row;
+    flex-wrap: wrap;
 
     .opcao {
         border-radius: 5px;
