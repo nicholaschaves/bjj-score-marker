@@ -42,12 +42,32 @@ export class AppComponent {
   sixMin: number = 6;
   sevenMin: number = 7;
   tenMin: number = 10;
+  personalizadoMin: number = 99;
+
+  showMarcadoresFlag = false;
+  tempoPersonalizado: number = 1;
 
   constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.tempoEscolhidoToScss = 6;
     this.countdownRaiz();
+  }
+
+  showMarcadores() {
+    this.showMarcadoresFlag = !this.showMarcadoresFlag;
+  }
+
+  setTempoPersonalizado() {
+    this.tempoDeLuta = this.tempoPersonalizado * 60 + 1;
+    if (this.subscriptionRaiz) {
+      this.resetarCountdownRaiz();
+    } else {
+      this.clockAlreadyRunning = false;
+      this.segundos = this.tempoDeLuta;
+      this.countdownRaiz();
+      this.resetarPontuacoes();
+    }
   }
 
   countdownRaiz() {
@@ -197,16 +217,24 @@ export class AppComponent {
   }
 
   changeTempoLuta(tempo: any) {
-    this.tempoDeLuta = tempo * 60 + 1;
-    this.tempoEscolhidoToScss = tempo;
-    if (this.subscriptionRaiz) {
-      this.resetarCountdownRaiz();
+
+    if (tempo == 99) {
+      this.tempoEscolhidoToScss = tempo;
     } else {
-      this.clockAlreadyRunning = false;
-      this.segundos = this.tempoDeLuta;
-      this.countdownRaiz();
-      this.resetarPontuacoes();
+      this.tempoDeLuta = tempo * 60 + 1;
+      this.tempoEscolhidoToScss = tempo;
+      if (this.subscriptionRaiz) {
+        this.resetarCountdownRaiz();
+      } else {
+        this.clockAlreadyRunning = false;
+        this.segundos = this.tempoDeLuta;
+        this.countdownRaiz();
+        this.resetarPontuacoes();
+      }
     }
+
+
+
   }
 
 }

@@ -7,7 +7,7 @@
         justify-content: center;
         width: 100vw;
         text-align: center;
-        background: #113468;
+        background: #253439;
         color: white;
     }
 }
@@ -100,8 +100,8 @@
         border-radius: 5px;
         padding: 5px;
         margin-right: 1vw;
-        border: 1px solid #113468;
-        color: #113468;
+        border: 1px solid #253439;
+        color: #253439;
         -webkit-user-select: none;
         /* Chrome all / Safari all */
         -moz-user-select: none;
@@ -114,7 +114,7 @@
 
     .opcao:hover {
         border: 1px solid white;
-        background-color: #113468;
+        background-color: #253439;
         color: white;
         cursor: pointer;
     }
@@ -136,12 +136,12 @@
     a,
     a:visited,
     a:active {
-        color: #113468;
+        color: #253439;
         text-decoration: none;
     }
 
     a:hover {
-        color: #113468;
+        color: #253439;
         text-decoration: underline;
         transition: all 0.3s ease;
     }
@@ -150,7 +150,7 @@
 .tempoEscolhido {
     border: 1px white;
     color: white !important;
-    background-color: #113468;
+    background-color: #253439;
 }
 
 .slide-in-top {
@@ -353,4 +353,120 @@
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+.empty-container {
+    height: 25vh;
+}
+
+.semPontos {
+    padding-top: 15vh;
+}
+
+// teste do modal
+
+.modal-window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+
+    &:target {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &>div {
+        width: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2em;
+        background: white;
+    }
+
+    header {
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 150%;
+        margin: 0 0 15px;
+    }
+}
+
+.modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+
+    &:hover {
+        color: black;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.modal-window {
+    &>div {
+        border-radius: 1rem;
+    }
+}
+
+.modal-window div:not(:last-of-type) {
+    margin-bottom: 15px;
+}
+
+.logo {
+    max-width: 150px;
+    display: block;
+}
+
+small {
+    color: lightgray;
+}
+
+.row-modal {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border: 1px solid #253439;
+}
+
+.row-modal > input {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.escolher-btn {
+    border-radius: 5px;
+    border: 1px solid #253439;
+    padding: 5px;
+    background-color: #253439;
+    color: white;
 }

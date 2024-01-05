@@ -3,7 +3,7 @@
         <h1 style="margin-top: 1vh;">NCBJJ</h1>
         <div class="purple-edition">
             <h1>Studio
-                 <!-- <img src="../assets/octopus-no-background.png" alt="octopus" style="width: 50px;"> -->
+                 <img src="../assets/logo-ncbjj.png" alt="ncbjj" style="width: 50px; margin-right: -10px;">
                 </h1>
 
         </div>
@@ -15,13 +15,18 @@
     <div class="opcao " (click)="changeTempoLuta(6) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sixMin}">6 minutos</div>
     <div class="opcao " (click)="changeTempoLuta(7) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sevenMin}">7 minutos</div>
     <div class="opcao " (click)="changeTempoLuta(10) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === tenMin}">10 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(99) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === personalizadoMin}">
+        <a class="btn-custom" href="#open-modal">Personalizado</a>
+    </div>
+    <div class="opcao " (click)="showMarcadores() " [ngClass]="{'tempoEscolhido' : showMarcadoresFlag}">Pontos</div>
+
 </div>
 
-<div class="row-clock slit-in-vertical">
+<div class="row-clock slit-in-vertical" [ngClass]="{'semPontos' : !showMarcadoresFlag }">
     <h5 id="clock">{{minutosToShow}}:{{segundosToShow}}</h5>
 </div>
 
-<div class="row row-icons slit-in-vertical" style="justify-content: space-evenly;margin-bottom: -55px; ">
+<div class="row row-icons slit-in-vertical" style="justify-content: space-evenly;margin-bottom: -55px;">
     <span class="material-icons " (click)="retomarCountdownRaiz() ">play_circle</span>
     <span class="material-icons " (click)="pausarCountdownRaiz() ">pause</span>
     <span class="material-icons " (click)="resetarCountdownRaiz() ">replay</span>
@@ -32,8 +37,9 @@
     <button (click)="pausarCountdownRaiz() ">PAUSAR</button> -->
 </div>
 
+<div *ngIf="!showMarcadoresFlag" class="empty-container"></div>
 
-<div class="placarA disable-select slide-in-left">
+<div class="placarA disable-select slide-in-left" *ngIf="showMarcadoresFlag">
     <div class="pontos ">
         <p> <strong (click)="mudarPontos( 'A', 'min') ">-</strong> {{pontosAtletaA}} <strong (click)="mudarPontos( 'A', 'add') ">+</strong></p>
     </div>
@@ -44,7 +50,7 @@
         <p> <strong (click)="mudarPunicoes( 'A', 'min') ">-</strong> {{punicoesAtletaA}} <strong (click)="mudarPunicoes( 'A', 'add') ">+</strong></p>
     </div>
 </div>
-<div class="placarB disable-select slide-in-right">
+<div class="placarB disable-select slide-in-right" *ngIf="showMarcadoresFlag">
     <div class="pontos ">
         <p> <strong (click)="mudarPontos( 'B', 'min') ">-</strong> {{pontosAtletaB}} <strong (click)="mudarPontos( 'B', 'add') ">+</strong></p>
     </div>
@@ -60,6 +66,18 @@
     <a href="https://www.instagram.com/nicholaschaves_/" target="_blank">
         <p>© Desenvolvido por Nicholas Chaves ©</p>
     </a>
+</div>
+
+<!-- teste do modal -->
+
+<div id="open-modal" class="modal-window">
+    <a href="#" title="Close" class="modal-close">Fechar</a>
+
+    <div class="row-modal">
+        <h1>Escolha o tempo desejado:</h1>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" [(ngModel)]="tempoPersonalizado">
+        <a class="escolher-btn" href="#" (click)="setTempoPersonalizado()">Escolher</a>
+    </div>
 </div>
 
 <router-outlet></router-outlet>
