@@ -46,16 +46,27 @@ export class AppComponent {
 
   showMarcadoresFlag = false;
   tempoPersonalizado: number = 1;
+  horaAtual = new Date();
+  dataAtual = new Date();
+  intervalHoraAtual;
+  showLogo = false;
 
   constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.tempoEscolhidoToScss = 6;
     this.countdownRaiz();
+    this.intervalHoraAtual = setInterval(() => {
+      this.horaAtual = new Date();
+    }, 1000);
   }
 
   showMarcadores() {
     this.showMarcadoresFlag = !this.showMarcadoresFlag;
+  }
+
+  showLogoChanger() {
+    this.showLogo = !this.showLogo;
   }
 
   setTempoPersonalizado() {
@@ -119,6 +130,7 @@ export class AppComponent {
 
   ngOnDestroy() {
     this.subscriptionRaiz.unsubscribe();
+    clearInterval(this.intervalHoraAtual);
   }
 
   mudarPontos(atleta: string, operacao: string) {
