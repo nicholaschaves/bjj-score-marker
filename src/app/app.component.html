@@ -1,21 +1,32 @@
-<div class="row slide-in-top">
-    <div class="title">
+<div class="row header-container slide-in-top">
+    <div class="data-atual">
+        {{dataAtual | date : 'dd/MM/yyyy'}}
+    </div>
+    <div class="title" (click)="showLogoChanger()">
         <h1 style="margin-top: 1vh;">NCBJJ</h1>
         <div class="purple-edition">
             <h1>Studio
-                 <img src="../assets/logo-ncbjj.png" alt="ncbjj" style="width: 50px; margin-right: -10px;">
-                </h1>
+                <img src="../assets/logo-ncbjj.png" alt="ncbjj" style="width: 50px; margin-right: -10px;">
+            </h1>
 
         </div>
+    </div>
+    <div class="hora-atual">
+        {{horaAtual | date : 'HH:mm:ss'}}
     </div>
 </div>
 
 <div class=" tempos slit-in-vertical">
-    <div class="opcao " (click)="changeTempoLuta(5) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === fiveMin}">5 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(6) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sixMin}">6 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(7) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sevenMin}">7 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(10) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === tenMin}">10 minutos</div>
-    <div class="opcao " (click)="changeTempoLuta(99) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === personalizadoMin}">
+    <div class="opcao " (click)="changeTempoLuta(5) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === fiveMin}">
+        5 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(6) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sixMin}">6
+        minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(7) "
+        [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === sevenMin}">7 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(10) " [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === tenMin}">
+        10 minutos</div>
+    <div class="opcao " (click)="changeTempoLuta(99) "
+        [ngClass]="{'tempoEscolhido' : tempoEscolhidoToScss === personalizadoMin}">
         <a class="btn-custom" href="#open-modal">Personalizado</a>
     </div>
     <div class="opcao " (click)="showMarcadores() " [ngClass]="{'tempoEscolhido' : showMarcadoresFlag}">Pontos</div>
@@ -41,45 +52,59 @@
 
 <div class="placarA disable-select slide-in-left" *ngIf="showMarcadoresFlag">
     <div class="pontos ">
-        <p> <strong (click)="mudarPontos( 'A', 'min') ">-</strong> {{pontosAtletaA}} <strong (click)="mudarPontos( 'A', 'add') ">+</strong></p>
+        <p> <strong (click)="mudarPontos( 'A', 'min') ">-</strong> {{pontosAtletaA}} <strong
+                (click)="mudarPontos( 'A', 'add') ">+</strong></p>
     </div>
     <div class="vantagens ">
-        <p> <strong (click)="mudarVantagens( 'A', 'min') ">-</strong> {{vantagensAtletaA}} <strong (click)="mudarVantagens( 'A', 'add') ">+</strong></p>
+        <p> <strong (click)="mudarVantagens( 'A', 'min') ">-</strong> {{vantagensAtletaA}} <strong
+                (click)="mudarVantagens( 'A', 'add') ">+</strong></p>
     </div>
     <div class="punicoes ">
-        <p> <strong (click)="mudarPunicoes( 'A', 'min') ">-</strong> {{punicoesAtletaA}} <strong (click)="mudarPunicoes( 'A', 'add') ">+</strong></p>
+        <p> <strong (click)="mudarPunicoes( 'A', 'min') ">-</strong> {{punicoesAtletaA}} <strong
+                (click)="mudarPunicoes( 'A', 'add') ">+</strong></p>
     </div>
 </div>
 <div class="placarB disable-select slide-in-right" *ngIf="showMarcadoresFlag">
     <div class="pontos ">
-        <p> <strong (click)="mudarPontos( 'B', 'min') ">-</strong> {{pontosAtletaB}} <strong (click)="mudarPontos( 'B', 'add') ">+</strong></p>
+        <p> <strong (click)="mudarPontos( 'B', 'min') ">-</strong> {{pontosAtletaB}} <strong
+                (click)="mudarPontos( 'B', 'add') ">+</strong></p>
     </div>
     <div class="vantagens ">
-        <p> <strong (click)="mudarVantagens( 'B', 'min') ">-</strong> {{vantagensAtletaB}} <strong (click)="mudarVantagens( 'B', 'add') ">+</strong></p>
+        <p> <strong (click)="mudarVantagens( 'B', 'min') ">-</strong> {{vantagensAtletaB}} <strong
+                (click)="mudarVantagens( 'B', 'add') ">+</strong></p>
     </div>
     <div class="punicoes ">
-        <p> <strong (click)="mudarPunicoes( 'B', 'min') ">-</strong> {{punicoesAtletaB}} <strong (click)="mudarPunicoes( 'B', 'add') ">+</strong></p>
+        <p> <strong (click)="mudarPunicoes( 'B', 'min') ">-</strong> {{punicoesAtletaB}} <strong
+                (click)="mudarPunicoes( 'B', 'add') ">+</strong></p>
     </div>
 </div>
 
 <div class="footer">
-    <a href="https://www.instagram.com/nicholaschaves_/" target="_blank">
+    <a href="https://www.instagram.com/ncbjj_" target="_blank">
         <p>© Desenvolvido por Nicholas Chaves ©</p>
     </a>
 </div>
 
+<div class="logo-background" [ngClass]="{'show-logo' : showLogo}">
+    <div class="container-logo-animated heartbeat" (click)="showLogoChanger()">
+        <img src="../assets/ncbjj-logo-background.png" alt="ncbjj - white">
+    </div>
+</div>
+
+
+
 <!-- teste do modal -->
 
 <div id="open-modal" class="modal-window">
-    <a href="#" title="Close" class="modal-close">Fechar</a>
-
     <div class="row-modal">
-        <h1>Escolha o tempo desejado:</h1>
+        <a href="#" title="Close" class="modal-close">X</a>
+        <h1 style="margin-top: 3vh;">Escolha o tempo desejado:</h1>
         <input type="number" id="quantity" name="quantity" min="1" max="10" [(ngModel)]="tempoPersonalizado">
-        <a class="escolher-btn" href="#" (click)="setTempoPersonalizado()">Escolher</a>
+        <a class="escolher-btn" href="#" (click)="setTempoPersonalizado()">SALVAR</a>
     </div>
 </div>
 
 <router-outlet></router-outlet>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js "></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js "></script>
