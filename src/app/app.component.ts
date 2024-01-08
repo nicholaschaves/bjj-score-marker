@@ -50,6 +50,8 @@ export class AppComponent {
   dataAtual = new Date();
   intervalHoraAtual;
   showLogo = false;
+  lastTenSecondsFlag: string;
+  animateFinalTimer = false;
 
   constructor(private snackBar: MatSnackBar) { }
 
@@ -59,6 +61,7 @@ export class AppComponent {
     this.intervalHoraAtual = setInterval(() => {
       this.horaAtual = new Date();
     }, 1000);
+    this.lastTenSecondsFlag = 'ignore';
   }
 
   showMarcadores() {
@@ -73,11 +76,13 @@ export class AppComponent {
     this.tempoDeLuta = this.tempoPersonalizado * 60 + 1;
     if (this.subscriptionRaiz) {
       this.resetarCountdownRaiz();
+      this.lastTenSecondsFlag = 'ignore';
     } else {
       this.clockAlreadyRunning = false;
       this.segundos = this.tempoDeLuta;
       this.countdownRaiz();
       this.resetarPontuacoes();
+      this.lastTenSecondsFlag = 'ignore';
     }
   }
 
@@ -88,10 +93,14 @@ export class AppComponent {
 
     if (this.segundosToShow < 10) {
       this.segundosToShow = '0' + this.segundosToShow;
+      this.lastTenSecondsFlag = 'last-ten-seconds-on';
+    } else {
+      this.lastTenSecondsFlag = 'ignore';
     }
 
     if (this.segundos == 0) {
       this.playWarningSound();
+      this.animateFinalTimer = true;
       // this.identificarVencedor();
       // this.snackBar.open('O vencedor é o atleta ' + this.vencedor, 'OK', {
       //   duration: 20000
@@ -113,6 +122,7 @@ export class AppComponent {
     this.segundos = this.tempoDeLuta;
     this.countdownRaiz();
     this.resetarPontuacoes();
+    this.lastTenSecondsFlag = 'ignore';
   }
 
   pausarCountdownRaiz() {
@@ -232,6 +242,7 @@ export class AppComponent {
 
     if (tempo == 99) {
       this.tempoEscolhidoToScss = tempo;
+      this.lastTenSecondsFlag = 'ignore';
     } else {
       this.tempoDeLuta = tempo * 60 + 1;
       this.tempoEscolhidoToScss = tempo;
@@ -243,6 +254,7 @@ export class AppComponent {
         this.countdownRaiz();
         this.resetarPontuacoes();
       }
+      this.lastTenSecondsFlag = 'ignore';
     }
 
 
