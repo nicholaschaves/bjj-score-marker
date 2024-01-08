@@ -12,6 +12,10 @@
     }
 }
 
+.title > h1 {
+  padding-right: 20px;
+}
+
 .header-container {
     background-color: #253439;
     width: 100%;
@@ -161,7 +165,8 @@
 }
 
 .purple-edition> h1 {
-  padding-left: 50px
+  padding-left: 50px;
+  padding-right: 20px;
 }
 
 .footer {
