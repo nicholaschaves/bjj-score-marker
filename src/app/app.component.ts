@@ -91,8 +91,13 @@ export class AppComponent {
     this.minutosToShow = moment.duration(this.segundos, "seconds").minutes();
     this.segundosToShow = moment.duration(this.segundos, "seconds").seconds();
 
-    if (this.segundosToShow <= 10) {
+    // validar pra incluir o 0 nos segundos
+    if (this.segundosToShow < 10) {
       this.segundosToShow = '0' + this.segundosToShow;
+    }
+
+    // validar estilo 
+    if (this.segundosToShow <= 10) {
       this.lastTenSecondsFlag = 'last-ten-seconds-on';
 
       if (this.minutosToShow > 0) {
