@@ -120,7 +120,7 @@ export class AppComponent {
   }
   playWarningSound() {
     this.warningSound = new Audio();
-    this.warningSound.src = "assets/police-whistle.wav";
+    this.warningSound.src = "assets/buzzer.wav";
     this.warningSound.load();
     this.warningSound.play();
   }
